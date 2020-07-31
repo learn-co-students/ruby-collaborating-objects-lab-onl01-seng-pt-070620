@@ -24,6 +24,4 @@ class Song
     self.artist = Artist.find_or_create_by_name(name)
     artist.add_song(self)
   end
-#  song = Song.new("La vie en rose")
- # song.artist_name=("Joe")
 end
