@@ -9,7 +9,7 @@ class Artist
     @name = name
     # the @songs attribute has many objects instead strings
     @songs = []  # establish the has many with song class
-    @@all << self
+    save
   end
 
   # returns all existing Artist instances
@@ -45,7 +45,6 @@ class Artist
         found_artist
       else
         new_artist = Artist.new(artist_name)
-        new_artist.save
         new_artist
       end
   end
