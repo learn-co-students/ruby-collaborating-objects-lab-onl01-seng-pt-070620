@@ -9,50 +9,23 @@ class Song
   def self.all 
     @@all 
   end
-  def save 
-    self.class.all << self
-  end
-  def self.create
-    song = self.new 
-    song.save
-    song
-  end 
-  def self.new_by_name(name)
-    song = Song.new
-    song.name = name 
-    song 
-  end 
-  def self.create_by_name(name)
-    song = self.new 
-    song.name = name 
-    song.save
-    song
-  end 
-  def self.find_by_name(name)
-    all.find {|n| n.name == name}
-  end 
-  def self.find_or_create_by_name(name)
-    find_by_name(name) || create_by_name(name)
-  end 
-  def artist_name 
-    
+  def artist_name=(name)
+    self.artist = Artist.find_or_create_by_name(name)
+    self.artist.add_song(self)
   end 
   
-  def self.new_from_filename(filename)
-    artist, song = filename.split(" - ")
-    parsed_song = song
+  def self.new_by_filename(file)
+    artist, song = file.split(" - ")
+    parsed_song = song.gsub(".mp3", "")
     
-    new_song = self.new
+    new_song = self.new(parsed_song)
     new_song.name = parsed_song 
-    new_song.artist = artist 
+    new_song.artist_name = artist 
     new_song
-    binding.pry
+    
   end
     
-  
-  def artist_name 
-  end 
-  
+
 end 
 #s = Song.new("99")
 #s.artist = artist_1

@@ -9,9 +9,7 @@ class Artist
   def self.all 
     @@all 
   end 
-  def save 
-    
-  end 
+   
   def add_song(song) #s = Song.new("hotline_bling")
   #drake = Artist.new("drake")
   #drake.add_song("kiki")
@@ -24,7 +22,7 @@ class Artist
   def self.create_by_name(name)
     artist = self.new(name)
     artist.name = name 
-    @@all << artist 
+    #@@all << artist 
     artist
   end 
    
